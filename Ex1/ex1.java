@@ -15,12 +15,40 @@ public class QSTLinkList
 		}
 	}
 	private static void printLinkList(Node head) {
+		LinkList node = head;  
+		while(head != null){  
+			head = head.next;
+			System.out.print(node.value);
+			if(node.next == null){
+				System.out.print("\n");
+			}
+			else{
+				System.out.print("->");
+			}
+			node = head;
+		} 
+	}
+	public void reverseLinkList(LinkList head){
+		Stack<LinkList> stack = new Stack<LinkList>();  
+		LinkList node = head;  
+		while(head != null){  
+			stack.push(head);  
+			head = head.next;  
+		} 
+		while(!stack.isEmpty()){  
+			node = stack.pop();
+			System.out.print(node.value);
+			if(!stack.isEmpty()){
+				System.out.print("->");
+			}
+		}
 	}
   
   public static void main( String[] args ){
     int[] arr = {1,3,5,7,2,4};
     Node head = createLinkList(arr);
     printLinkList(head);
+    reverseLinkList(head);
   }
 	private static Node createLinkList(int[] arr) {
 		// TODO Auto-generated method stub
